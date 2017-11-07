@@ -12,8 +12,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/goml/gobrain"
-	//"./gobrain"
+	//"github.com/goml/gobrain"
+	"./gobrain"
 )
 
 var setIndex = make([]float64, 0)
@@ -60,7 +60,7 @@ func readFile(filePath string) {
 
 func convertToPatterns() {
 	for i := 10; i < len(setIndexPercent); i++ {
-		dataSet := [][]float64{[]float64{setIndexPercent[i-10],setIndexPercent[i-9],setIndexPercent[i-8],setIndexPercent[i-7],setIndexPercent[i-6],setIndexPercent[i-5], setIndexPercent[i-4], setIndexPercent[i-3], setIndexPercent[i-2], setIndexPercent[i-1]}, {setIndexPercent[i]}}
+		dataSet := [][]float64{[]float64{setIndexPercent[i-10], setIndexPercent[i-9], setIndexPercent[i-8], setIndexPercent[i-7], setIndexPercent[i-6], setIndexPercent[i-5], setIndexPercent[i-4], setIndexPercent[i-3], setIndexPercent[i-2], setIndexPercent[i-1]}, {setIndexPercent[i]}}
 		patterns = append(patterns, dataSet)
 	}
 }
@@ -113,7 +113,7 @@ func main() {
 	// the training will run for 1000 epochs
 	// the learning rate is set to 0.6 and the momentum factor to 0.4
 	// use true in the last parameter to receive reports about the learning error
-	ff.Train(patterns, 1000, 0.6, 0.4, false)
+	ff.Train(patterns, 100000, 0.6, 0.4, false)
 
 	// testing the network
 	/*store = */
@@ -124,8 +124,8 @@ func main() {
 
 	// predicting a value
 	//inputs := []float64{0.42075325, 0.15326072, 0.15768098, -0.39619605, -0.73605319}
-	inputs := []float64{-0.98,-1.41,0.54,0.55,0.41,0.42,0.15,0.16,-0.40,-0.74}
+	inputs := []float64{-1.41, 0.54, 0.55, 0.41, 0.42, 0.15, 0.16, -0.40, -0.74, -0.03}
 	output := ff.Update(inputs)
 
-	fmt.Printf("\n%g\n", output)
+	fmt.Printf("Output,%g\n", output)
 }

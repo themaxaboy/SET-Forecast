@@ -134,6 +134,7 @@ func (nn *FeedForward) Update(inputs []float64) []float64 {
 
 	return nn.OutputActivations
 }
+
 /*
 The BackPropagate method is used, when training the Neural Network,
 to back propagate the errors from network activation.
@@ -183,6 +184,7 @@ func (nn *FeedForward) BackPropagate(targets []float64, lRate, mFactor float64) 
 
 	return e
 }
+
 /*
 This method is used to train the Network, it will run the training operation for 'iterations' times
 and return the computed errors when training.
@@ -211,6 +213,6 @@ func (nn *FeedForward) Train(patterns [][][]float64, iterations int, lRate, mFac
 
 func (nn *FeedForward) Test(patterns [][][]float64) {
 	for _, p := range patterns {
-		fmt.Println(p[0], "->", nn.Update(p[0]), " : ", p[1])
+		fmt.Println(p[0], ",", nn.Update(p[0]), ",", p[1])
 	}
 }
